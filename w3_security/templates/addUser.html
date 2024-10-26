@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% block sub_content %}
+<div class="text-center">
+    <h1>User Registration</h1>
+</div>
+<form class="form-horizontal" method="POST">
+    {{ form.hidden_tag() }}  <!-- CSRF protection token -->
+    <div class="form-group">
+        <label class="control-label col-sm-2">Username</label>
+        <div class="col-sm-5">
+            {{ form.username(class="form-control") }}
+            {% for error in form.username.errors %}
+            <p class="text-danger">{{ error }}</p>
+            {% endfor %}
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-sm-2">Email</label>
+        <div class="col-sm-5">
+            {{ form.email(class="form-control") }}
+            {% for error in form.email.errors %}
+            <p class="text-danger">{{ error }}</p>
+            {% endfor %}
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-sm-2">Password</label>
+        <div class="col-sm-5">
+            {{ form.password(class="form-control") }}
+            {% for error in form.password.errors %}
+            <p class="text-danger">{{ error }}</p>
+            {% endfor %}
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-sm-2">Confirm Password</label>
+        <div class="col-sm-5">
+            {{ form.confirm_password(class="form-control") }}
+            {% for error in form.confirm_password.errors %}
+            <p class="text-danger">{{ error }}</p>
+            {% endfor %}
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+    </div>
+</form>
+{% endblock %}

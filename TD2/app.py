@@ -37,7 +37,7 @@ class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(80), unique=True)
     email = db.Column(db.String(200), unique=True)
-    password = db.Column(db.String(200))
+    password = db.Column(db.String(10024))
 
     def __str__(self):
         return self.username
@@ -48,7 +48,7 @@ class UserAdmin(ModelView):
 
     def on_model_change(self, form, model, is_created):
         if form.password.data:
-            model.password = generate_password_hash(form.password.data)
+            model.password =form.password.data #generate_password_hash(form.password.data)
 
 admin.add_view(UserAdmin(User, db.session))
 

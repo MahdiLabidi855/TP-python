@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Edit User</h2>
+<form method="POST" enctype="multipart/form-data">
+    <input type="text" name="username" value="{{ user.username }}" required>
+    <input type="email" name="email" value="{{ user.email }}" required>
+    <input type="file" name="photo">
+
+    {% if user.photo %}
+        <img src="{{ url_for('static', filename='image/' + user.photo) }}" alt="User Photo">
+    {% endif %}
+
+    <button type="submit">Update User</button>
+</form>
+{% endblock %}
